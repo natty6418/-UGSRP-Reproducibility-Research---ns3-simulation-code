@@ -1,0 +1,7 @@
+# Ignore everything on scratch by default, except the provided examples
+/*
+!.gitignore
+
+!tcp-reno-custom-simulation/
+!tcp-bbr-replication-experiment/
+
