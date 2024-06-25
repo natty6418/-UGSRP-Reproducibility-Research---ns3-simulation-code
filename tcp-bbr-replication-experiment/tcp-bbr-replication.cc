@@ -20,7 +20,7 @@
 
 using namespace ns3;
 // std::string dir = "results/";
-Time stopTime = Seconds(2);
+Time stopTime = Seconds(60);
 uint32_t segmentSize = 1448;
 
 // std::ofstream fPlotSsthresh;
