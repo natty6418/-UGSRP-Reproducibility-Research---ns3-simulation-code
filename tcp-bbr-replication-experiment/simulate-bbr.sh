@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Define the CSV file name
-CSV_FILE="parameters.csv"
+ROOT_DIR=`pwd`
+CSV_FILE="${ROOT_DIR}/parameters.csv"
 
 #mkdir -p tcp-bbr-cubic-results/throughput
 
@@ -14,7 +15,7 @@ while IFS=',' read -r qdiscSize bottleneck_bandwidth delay tcpTypeId trial; do
 	fi
 
 	# Construct the output file name using the parameters
-	OUTPUT_FILE="tcp-bbr-cubic-results/${qdiscSize}_${bottleneck_bandwidth}_${delay}_${tcpTypeId}/goodput_retransmission_results.txt"
+	OUTPUT_FILE="${ROOT_DIR}/../../../tcp-bbr-cubic-results/${qdiscSize}_${bottleneck_bandwidth}_${delay}_${tcpTypeId}/goodput_retransmission_results.txt"
 
 	echo "Output file: $OUTPUT_FILE"
 	# Check if the output file already exists
@@ -24,7 +25,7 @@ while IFS=',' read -r qdiscSize bottleneck_bandwidth delay tcpTypeId trial; do
 	fi
 
 	# Run the simulation
-	COMMAND="./ns3 run \"scratch/tcp-brr-replication-experiment/tcp-bbr-replication.cc --qdiscSize=$qdiscSize --bottleneck_bandwidth=$bottleneck_bandwidth --delay=${delay} --tcpTypeId=ns3::$tcpTypeId\""
+	COMMAND="ns3 run \"tcp-bbr-replication.cc --qdiscSize=$qdiscSize --bottleneck_bandwidth=$bottleneck_bandwidth --delay=${delay} --tcpTypeId=ns3::$tcpTypeId\""
 
 	echo "Running: $COMMAND"
 	eval $COMMAND

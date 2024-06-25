@@ -20,7 +20,7 @@
 
 using namespace ns3;
 // std::string dir = "results/";
-Time stopTime = Seconds(60);
+Time stopTime = Seconds(2);
 uint32_t segmentSize = 1448;
 
 // std::ofstream fPlotSsthresh;
@@ -172,9 +172,9 @@ main(int argc, char* argv[])
     // --dir="output_${qdiscSize}_${bottleneck_bandwidth}_${delay}_${tcpTypeId}_${trial}" 
     std::string tcpTypeIdStr;
     if (tcpTypeId == "ns3::TcpCubic"){
-        tcpTypeIdStr = "Cubic";
+        tcpTypeIdStr = "TcpCubic";
     } else if (tcpTypeId == "ns3::TcpBbr" ){
-        tcpTypeIdStr = "Bbr";
+        tcpTypeIdStr = "TcpBbr";
     }
     
 
