@@ -44,6 +44,12 @@ tar jxf ns-allinone-3.42.tar.bz2
 cd ns-allinone-3.42/ 
 ```
 
+Add the directory to the `PATH`:
+
+```
+PATH=$PATH:/home/ubuntu/ns-allinone-3.42/ns-3.42
+```
+
 ### Install SLURM on the resource
 
 ```
@@ -127,3 +133,23 @@ Check with
 sinfo
 ```
 the `STATE` should be `idle`.
+
+### Get simulation code
+
+1. Clone this repo:
+
+```
+git clone https://github.com/natty6418/TCP-ns3
+```
+
+2. Put it in the scratch directory:
+
+```
+cp -R TCP-ns3/tcp-bbr-replication-experiment ns-allinone-3.42/ns-3.42/scratch/tcp-bbr-repro
+```
+
+3. Build the simulation:
+
+```
+ns3 build
+```
