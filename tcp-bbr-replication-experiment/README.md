@@ -171,6 +171,5 @@ Now you can submit `simulate-bbr-slurm.sh` -
 sbatch --array=2-115 --ntasks 1 --cpus-per-task 1 simulate-bbr-slurm.sh
 ```
 
-
-```
+Use `squeue` to monitor status.
 
