@@ -357,6 +357,8 @@ main(int argc, char* argv[])
         uint32_t retransmissions = i->second.txPackets - i->second.rxPackets - i->second.lostPackets;
         resultFile << "  Retransmissions: " << retransmissions << "\n";
         std::cout << "  Retransmissions: " << retransmissions << "\n";
+        resultFile << "  Average Delay: " << i->second.delaySum.GetSeconds() / i->second.rxPackets << "\n";
+        std::cout << "  Average Delay: " << i->second.delaySum.GetSeconds() / i->second.rxPackets << "\n";
     }
     resultFile.close();
 
