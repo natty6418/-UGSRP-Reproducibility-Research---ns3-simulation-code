@@ -1,5 +1,7 @@
 To run this experiment on FABRIC - 
 
+## Setup 
+
 ### Get resources on FABRIC
 
 In a Python notebook in the FABRIC Jupyter environment,
@@ -49,6 +51,33 @@ Add the directory to the `PATH`:
 ```
 PATH=$PATH:/home/ubuntu/ns-allinone-3.42/ns-3.42
 ```
+
+### Get simulation code
+
+1. Clone this repo:
+
+```
+git clone https://github.com/natty6418/TCP-ns3
+```
+
+2. Put it in the scratch directory:
+
+```
+cp -R TCP-ns3/tcp-bbr-replication-experiment ns-allinone-3.42/ns-3.42/scratch/tcp-bbr-repro
+```
+
+3. Build the simulation:
+
+```
+ns3 build
+```
+
+## Run each experiment in sequence
+
+<!-- TODO -->
+
+## Run experiments in parallel
+
 
 ### Install SLURM on the resource
 
@@ -134,22 +163,14 @@ sinfo
 ```
 the `STATE` should be `idle`.
 
-### Get simulation code
+### Submit experiments to SLURM
 
-1. Clone this repo:
-
-```
-git clone https://github.com/natty6418/TCP-ns3
-```
-
-2. Put it in the scratch directory:
+Now you can submit `simulate-bbr-slurm.sh` - 
 
 ```
-cp -R TCP-ns3/tcp-bbr-replication-experiment ns-allinone-3.42/ns-3.42/scratch/tcp-bbr-repro
+sbatch --array=2-115 --ntasks 1 --cpus-per-task 1 simulate-bbr-slurm.sh
 ```
 
-3. Build the simulation:
 
 ```
-ns3 build
-```
+
