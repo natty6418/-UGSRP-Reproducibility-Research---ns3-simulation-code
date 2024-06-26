@@ -151,6 +151,7 @@ main(int argc, char* argv[])
     std::string qdiscSize = "0.1MB";
     std::string delay = "4.8ms";
     std::string bottleneck_bandwidth = "1.25Mbps";
+    std::string dir = "tcp-bbr-cubic-results/";
 
     CommandLine cmd;
     cmd.AddValue("tcpTypeId",
@@ -167,6 +168,7 @@ main(int argc, char* argv[])
     cmd.AddValue("qdiscSize", "Size of the queue", qdiscSize);
     cmd.AddValue("delay", "Delay of the link", delay);
     cmd.AddValue("bottleneck_bandwidth", "Bandwidth of the bottleneck link", bottleneck_bandwidth);
+    cmd.AddValue("dir", "Directory to store the results", dir);
     cmd.Parse(argc, argv);
 
     // --dir="output_${qdiscSize}_${bottleneck_bandwidth}_${delay}_${tcpTypeId}_${trial}" 
@@ -177,8 +179,8 @@ main(int argc, char* argv[])
         tcpTypeIdStr = "TcpBbr";
     }
     
+    dir = dir  + qdiscSize + "_" + bottleneck_bandwidth + "_" + delay + "_" + tcpTypeIdStr + "/";
 
-    std::string dir = "tcp-bbr-cubic-results/" + qdiscSize + "_" + bottleneck_bandwidth + "_" + delay + "_" + tcpTypeIdStr + "/";
 
     // TypeId qdTid;
     // NS_ABORT_MSG_UNLESS(TypeId::LookupByNameFailSafe(qdiscTypeId, &qdTid),
