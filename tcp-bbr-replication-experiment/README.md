@@ -115,3 +115,14 @@ PartitionName=LocalQ Nodes=ALL Default=YES MaxTime=INFINITE State=UP
 GresTypes=gpu,mps
 DebugFlags=CPU_Bind,gres
 ```
+Then start with
+
+```
+sudo service slurmctld restart && sudo service slurmd restart
+```
+
+Check with 
+
+```
+sinfo
+```
