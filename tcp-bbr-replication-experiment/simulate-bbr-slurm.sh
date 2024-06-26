@@ -1,9 +1,9 @@
 #!/bin/bash
 
-ROOT_DIR=`/tmp`
-CSV_FILE="/home/ubuntu/ns-allinone-3.42/ns-3.42/scratch/tcp-ns3/tcp-bbr-replication-experiment/parameters.csv"
+ROOT_DIR=`~/`
+CSV_FILE="/home/ubuntu/source/ns-3.42/scratch/tcp-bbr-repo/parameters.csv"
 OUTPUT_DIR="/home/ubuntu/simulation_data/"
-PATH=$PATH:"/home/ubuntu/ns-allinone-3.42/ns-3.42"
+PATH=$PATH:"/home/ubuntu/source/ns-3.42/"
 TARGET_ROW=$SLURM_ARRAY_TASK_ID
 
 # Go to working dir
@@ -19,7 +19,7 @@ while IFS=',' read -r qdiscSize bottleneck_bandwidth delay tcpTypeId trial; do
         echo "qdiscSize: $qdiscSize, bottleneck_bandwidth: $bottleneck_bandwidth, delay: $delay, tcpTypeId: $tcpTypeId, trial: $trial"
 
         # Construct the output file name using the parameters
-        OUTPUT_FILE="${OUTPUT_DIR}tcp-bbr-cubic-results/${qdiscSize}_${bottleneck_bandwidth}_${delay}_${tcpTypeId}/goodput_retransmission_results.txt"
+        OUTPUT_FILE="${OUTPUT_DIR}${qdiscSize}_${bottleneck_bandwidth}_${delay}_${tcpTypeId}/goodput_retransmission_results.txt"
 
         echo "Output file: $OUTPUT_FILE"
         # Check if the output file already exists

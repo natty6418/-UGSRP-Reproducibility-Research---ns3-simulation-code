@@ -41,17 +41,34 @@ Log in the resource over SSH once it is ready.
 
 ```
 sudo apt install g++ python3 python3-pip cmake ninja-build git ccache -y
-wget https://www.nsnam.org/releases/ns-allinone-3.42.tar.bz2
-tar jxf ns-allinone-3.42.tar.bz2
-cd ns-allinone-3.42/ 
+git clone https://gitlab.com/nsnam/bake
+export BAKE_HOME=`pwd`/bake 
+export PATH=$PATH:$BAKE_HOME
+export PYTHONPATH=$PYTHONPATH:$BAKE_HOME
+bake.py check
+bake.py configure -e ns-3.42
+```
+Use the following command to check if there are any missing dependencies and install them manually.
+```bash
+bake.py show
+```
+Finally
+```bash
+bake.py deploy 
 ```
 
 Add the directory to the `PATH`:
 
+```bash
+cd source/ns-3.42
+export NS3_HOME=`pwd`
+export PATH=$PATH:$NS3_HOME
 ```
-PATH=$PATH:/home/ubuntu/ns-allinone-3.42/ns-3.42
+Configure and build ns3
+```bash
+ns3 configure --enable-examples --enable-tests
+ns3 build
 ```
-
 ### Get simulation code
 
 1. Clone this repo:
@@ -63,7 +80,7 @@ git clone https://github.com/natty6418/TCP-ns3
 2. Put it in the scratch directory:
 
 ```
-cp -R TCP-ns3/tcp-bbr-replication-experiment ns-allinone-3.42/ns-3.42/scratch/tcp-bbr-repro
+cp -R TCP-ns3/tcp-bbr-replication-experiment source/ns-3.42/scratch/tcp-bbr-repro
 ```
 
 3. Build the simulation:
@@ -74,7 +91,12 @@ ns3 build
 
 ## Run each experiment in sequence
 
-<!-- TODO -->
+```bash
+cd source/ns-3.42/scratch/tcp-bbr-repro/
+./simulate-bbr.sh
+```
+
+
 
 ## Run experiments in parallel
 
