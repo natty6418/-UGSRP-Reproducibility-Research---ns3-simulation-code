@@ -126,3 +126,4 @@ Check with
 ```
 sinfo
 ```
+the `STATE` should be `idle`.
