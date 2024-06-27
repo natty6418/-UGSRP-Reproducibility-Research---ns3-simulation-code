@@ -98,7 +98,7 @@ void InstallBulkSend(Ptr<Node> node, Ipv4Address address, uint16_t port,
 }
 void InstallOnOff(Ptr<Node> node, Ipv4Address address, uint16_t port,
                   std::string socketFactory,
-                  DataRate dataRate, uint16_t num_flows = 1, double stopTime = 100.0)
+                  DataRate dataRate, uint16_t num_flows = 1, double stopTime = 60.0)
 {
     for (uint16_t i = 0; i < num_flows; ++i)
     {
@@ -225,7 +225,7 @@ main(int argc, char* argv[])
 
     // Create the point-to-point link helpers and connect two router nodes
     PointToPointHelper accessLink;
-    accessLink.SetDeviceAttribute("DataRate", StringValue("1Gbps"));
+    accessLink.SetDeviceAttribute("DataRate", StringValue("10Gbps"));
     accessLink.SetChannelAttribute("Delay", StringValue(delay));
     // accessLink.SetQueue("ns3::DropTailQueue", "MaxSize", QueueSizeValue(QueueSize("1p")));
 
@@ -314,7 +314,7 @@ main(int argc, char* argv[])
 
     // // Install OnOff application
     // InstallOnOff(leftNode.Get(0), routerToRightIPAddress[0].GetAddress(1), port,
-    //                 socketFactory, leftNode.Get(0)->GetId(), 0, DataRate("100Mbps"), 1, stopTime.GetSeconds());
+    //                 socketFactory, DataRate("2Gbps"), 1, stopTime.GetSeconds());
 
     // Ping from leftNode to rightNode
     // PingHelper pinghelper(routerToRightIPAddress[0].GetAddress(1), leftToRouterIPAddress[0].GetAddress(0));
