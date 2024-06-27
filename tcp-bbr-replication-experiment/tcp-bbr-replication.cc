@@ -197,8 +197,8 @@ main(int argc, char* argv[])
 
 
     // Set default sender and receiver buffer size as 1MB
-    Config::SetDefault("ns3::TcpSocket::SndBufSize", UintegerValue(2147483647));
-    Config::SetDefault("ns3::TcpSocket::RcvBufSize", UintegerValue(2147483647));
+    Config::SetDefault("ns3::TcpSocket::SndBufSize", UintegerValue(1<<30));
+    Config::SetDefault("ns3::TcpSocket::RcvBufSize", UintegerValue(1<<30));
 
     // Set default initial congestion window as 10 segments
     Config::SetDefault("ns3::TcpSocket::InitialCwnd", UintegerValue(10));
